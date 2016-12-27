@@ -1,0 +1,14 @@
+AIX:
+-------libssh2 configure: error: C compiler cannot create executables
+./configure --prefix=/data01/GZTEST/gztest/wangcc5/libssh2 CFLAGS=-maix64 CPPFLAGS="-I/data01/GZTEST/gztest/wangcc5/openssl/include" LDFLAGS="-L/data01/GZTEST/gztest/wangcc5/openssl/lib"
+
+g++ -maix64 -o ssh2 ssh2.cpp -g -DHAVE_SYS_SOCKET_H -DHAVE_ARPA_INET_H -DHAVE_UNISTD_H -I./include ./lib/libssh2.a -ldl -lcrypto -lz
+
+
+
+
+Linux #编译libssh2
+relocation R_X86_64_32 can not be used when making a shared object; recompile with -fPIC的解决方法
+
+解决方法在configure加如下参数--disable-shared --with-pic或者--enable-shared，在这里设置CFLAGS没有用
+./configure --prefix=/opt/zengql/ssh2 --disable-shared --with-pic CPPFLAGS="-I/opt/zengql/openssl/include" LDFLAGS="-L/opt/zengql/openssl/lib -ldl"
